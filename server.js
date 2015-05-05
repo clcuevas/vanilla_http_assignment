@@ -20,7 +20,7 @@ var server = http.createServer(function(request, response) {
     console.log('hit greet path');
     //do something with /greet request here
     response.writeHead(200, {
-      "Content-Type": "application/json, text/plain"
+      "Content-Type": "application/json"
     });//end /greet write head
 
     if(request.method === 'POST') {
@@ -29,10 +29,16 @@ var server = http.createServer(function(request, response) {
         response.write(JSON.stringify({msg: 'hello world'}));
         return response.end();
       });//end on POST request
-    } else {
-      console.log(typeof response);
-      response.write(JSON.stringify({msg: 'hello ' + getSingleWord}));
-      return response.end();
+    } 
+
+    if(request.method === 'GET') {
+      if(getSingleWord === undefined) {
+        response.write(JSON.stringify({msg: 'hello world'}));
+        return response.end();
+      } else {
+        response.write(JSON.stringify({msg: 'hello ' + getSingleWord}));
+        return response.end();
+      }
     }
   } else {
     response.writeHead(404, {
