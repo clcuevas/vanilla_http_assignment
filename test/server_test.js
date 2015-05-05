@@ -34,7 +34,7 @@ describe('our server', function() {
 
   it('should greet by POST request', function(done) {
     chai.request('localhost:3000')
-      .get('/greet')
+      .post('/greet')
       .send({msg: 'hello world'})
       .end(function(err, res) {
         expect(err).to.eql(null);
