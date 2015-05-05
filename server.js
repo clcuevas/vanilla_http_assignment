@@ -9,7 +9,6 @@ var server = http.createServer(function(request, response) {
   var getPath = userInput[1];
 
   if(('/' + getPath) === '/time') {
-    //do something with /time request here
     var date = new Date().toString();
     response.writeHead(200, {
       "Content-Type": "text/plain"
@@ -18,14 +17,12 @@ var server = http.createServer(function(request, response) {
     return response.end();
   } else if(('/' + getPath) === '/greet') {
     console.log('hit greet path');
-    //do something with /greet request here
     response.writeHead(200, {
       "Content-Type": "application/json"
     });//end /greet write head
 
     if(request.method === 'POST') {
       request.on('data', function(data) {
-        //var pathname = url.parse(request.url).data;
         response.write(JSON.stringify({msg: 'hello world'}));
         return response.end();
       });//end on POST request

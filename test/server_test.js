@@ -15,23 +15,33 @@ describe('our server', function() {
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.status).to.eql(200);
-        expect(res).to.be.text;
-        //expect(res.body.msg).to.eql({msg: 'hello world'}); 
+        expect(res).to.be.json;
+        expect(res.body.msg).to.eql('hello world'); 
         done();
       });
   });
 
-  it('should greet by name for post requests', function(done) {
+  it('should greet by name', function(done) {
     chai.request('localhost:3000')
       .get('/greet/claudia')
-      //.send({msg: 'hello claudia'})
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res).to.be.json;
-        //expect(res).to.eql('hello claudia');
+        expect(res.body.msg).to.eql('hello claudia');
         done();
       });
   });
+
+  it('should greet by POST request', function(done) {
+    chai.request('localhost:3000')
+      .get('/greet')
+      .send({msg: 'hello world'})
+      .end(function(err, res) {
+        expect(err).to.eql(null);
+        expect(res.body.msg).to.eql('hello world');
+        done();
+      });
+  })
 
   it('should have a 404 page', function(done) {
     chai.request('localhost:3000')
