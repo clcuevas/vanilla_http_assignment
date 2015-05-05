@@ -1,0 +1,24 @@
+{
+  "name": "vanilla_http_assignment",
+  "version": "0.1.0",
+  "description": "basic http server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omordn/vanilla_http_assignment.git"
+  },
+  "author": "omordn@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/omordn/vanilla_http_assignment/issues"
+  },
+  "homepage": "https://github.com/omordn/vanilla_http_assignment",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "chai-http": "^1.0.0",
+    "mocha": "^2.2.4"
+  }
+}
