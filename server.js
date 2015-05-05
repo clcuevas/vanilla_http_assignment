@@ -30,6 +30,7 @@ var server = http.createServer(function(request, response) {
         return response.end();
       });//end on POST request
     } else {
+      console.log(typeof response);
       response.write(JSON.stringify({msg: 'hello ' + getSingleWord}));
       return response.end();
     }
